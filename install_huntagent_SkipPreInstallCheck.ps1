@@ -99,13 +99,6 @@ New-Module -name install_dattoedr -scriptblock {
 				return
 			}
 #>
-
-			# Always install even if HuntAgent exists
-			if (Get-Service -Name huntAgent -ErrorAction SilentlyContinue) {
-			    if ($Interactive) { Write-Warning "HUNTAgent service detected, but proceeding with installation anyway." }
-			    "$(Get-Date) [Information] HUNTAgent service detected. Proceeding with installation anyway." >> $LogPath
-			}
-
 		}
 
 		# Downloading Agent
@@ -257,3 +250,4 @@ New-Module -name install_dattoedr -scriptblock {
 Set-Alias installagent -Value Install-EDR
 
 Set-Alias uninstallagent -Value Uninstall-EDR
+
